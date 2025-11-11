@@ -137,27 +137,90 @@ insert into hopdongchitiet values
 (8, 2, 12, 2);
 
 -- -----cau2-----
+-- 2.Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự 
+-- “H”, “T” hoặc “K” và có tối đa 15 kí tự.
 select *
 from nhanvien
 where ho_ten like "H%" 
 or ho_ten like  "T%" 
 or ho_ten like  "K%";
 
-SELECT *
-FROM khachhang
-WHERE (YEAR(CURDATE()) - YEAR(ngay_sinh)) BETWEEN 18 AND 50
-  AND (dia_chi = 'Đà Nẵng' OR dia_chi = 'Quảng Trị');
+-- 3.Hiển thị thông tin của tất cả khách hàng có độ tuổi từ
+--  18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị”.
+select *
+from khachhang
+where timestampdiff(year, ngay_sinh, curdate()) between 18 and 50
+  and (dia_chi like '%đà nẵng%' or dia_chi like '%quảng trị%');
+
   
   
----- -----4------
-SELECT *,COUNT(khachhang.ma_loai_khach) AS so_khach
-FROM khachhang
-left JOIN loaikhach 
-ON khachhang.ma_loai_khach = loaikhach.ma_loai_khach
-WHERE loaikhach.ten_loai_khach = 'Diamond'
-GROUP BY loaikhach.ma_loai_khach, loaikhach.ten_loai_khach;
+-- ---- -----4------
+select kh.ma_khach_hang,
+    kh.ho_ten,
+    lk.ten_loai_khach ,count(hd.ma_hop_dong) as so_lan_dat_phong
+from khachhang kh
+join loaikhach lk on kh.ma_loai_khach = lk.ma_loai_khach
+join hopdong hd on kh.ma_khach_hang = hd.ma_khach_hang
+where lk.ten_loai_khach = 'diamond'
+group by kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach
+order by so_lan_dat_phong asc;
+
 
 -- -----cau5------
+select 
+    kh.ma_khach_hang,          
+    kh.ho_ten,                 
+    lk.ten_loai_khach,        
+    hd.ma_hop_dong,           
+    dv.ten_dich_vu,
+    hd.ngay_lam_hop_dong,     
+    hd.ngay_ket_thuc,
+    dv.chi_phi_thue + ifnull(sum(hdct.so_luong * dvdk.gia), 0) as tong_tien
+from khachhang kh
+left join loaikhach lk on kh.ma_loai_khach = lk.ma_loai_khach
+left join hopdong hd on kh.ma_khach_hang = hd.ma_khach_hang
+left join dichvu dv on hd.ma_dich_vu = dv.ma_dich_vu
+left join hopdongchitiet hdct on hd.ma_hop_dong = hdct.ma_hop_dong
+left join dichvudikem dvdk on hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+group by 
+    kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, 
+    hd.ma_hop_dong, dv.ten_dich_vu, 
+    hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, dv.chi_phi_thue
+order by kh.ma_khach_hang;
+
+
+-- ----cau6----
+select dv.ma_dich_vu,
+dv.ten_dich_vu,
+dv.dien_tich,
+dv.chi_phi_thue,
+ldv.ten_loai_dich_vu
+from dichvu dv
+left join loaidichvu ldv on dv.ma_loai_dich_vu = ldv.ma_loai_dich_vu
+left join hopdong hd on dv.ma_dich_vu = hd.ma_dich_vu
+and year(hd.ngay_lam_hop_dong) = 2021
+and month(hd.ngay_lam_hop_dong) in (1, 2, 3)
+where hd.ma_hop_dong is null;
+
+-- --cau8---
+select ho_ten
+from khachhang
+group by ho_ten;
+
+
+-- --cau9---
+select thang,count(*) as so_khach_hang
+from (select ma_khach_hang, month(ngay_lam_hop_dong) as thang
+from hopdong
+where year(ngay_lam_hop_dong) = 2021
+group by ma_khach_hang, month(ngay_lam_hop_dong)
+) as kh_thang
+group by thang
+order by thang;
+
+
+
+
 
 
 
