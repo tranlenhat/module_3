@@ -150,20 +150,15 @@ WHERE (YEAR(CURDATE()) - YEAR(ngay_sinh)) BETWEEN 18 AND 50
   
   
 ---- -----4------
-SELECT 
-    loaikhach.ma_loai_khach,
-    loaikhach.ten_loai_khach,
-    COUNT(khachhang.ma_khachhang) AS so_khach
-FROM 
-    khachhang
-RIGHT JOIN 
-    loaikhach 
-ON 
-    khachhang.ma_loai_khach = loaikhach.ma_loai_khach
-WHERE 
-    loaikhach.ten_loai_khach = 'Diamond'
-GROUP BY 
-    loaikhach.ma_loai_khach, loaikhach.ten_loai_khach;
+SELECT *,COUNT(khachhang.ma_loai_khach) AS so_khach
+FROM khachhang
+left JOIN loaikhach 
+ON khachhang.ma_loai_khach = loaikhach.ma_loai_khach
+WHERE loaikhach.ten_loai_khach = 'Diamond'
+GROUP BY loaikhach.ma_loai_khach, loaikhach.ten_loai_khach;
+
+-- -----cau5------
+
 
 
 
