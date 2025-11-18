@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sản Phẩm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="mycss.css">
+</head>
+<body>
+<div class="container">
+    <div class="main">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="staff-header">
+                <i class="fas fa-user-tie"></i>
+                STAFF
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-box"></i>
+                <span>Quản Lý Kho Hàng</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-bullhorn"></i>
+                <span>Quản lý khuyến mãi</span>
+            </div>
+            <div class="menu-item active">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Quản Lý SP & DM</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-calendar-check"></i>
+                <span>Quản Lý Đơn Đặt Hàng</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Header -->
+            <div class="header">
+                <i class="fas fa-bell" style="font-size: 20px; color: #666; cursor: pointer;"></i>
+                <div class="user-info">
+                    <div class="user-name">
+                        <strong>Nguyễn Văn A</strong>
+                        <span>Nhân Viên</span>
+                    </div>
+                    <div class="user-avatar">A</div>
+                </div>
+            </div>
+
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <div class="search-box">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-add">
+                        Thêm <i class="fas fa-plus"></i>
+                    </button>
+                    <button class="btn btn-category">
+                        Danh mục <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="table-section">
+                <h2 class="section-title">DANH SÁCH SẢN PHẨM</h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên Sản Phẩm</th>
+                        <th>Số Lượng</th>
+                        <th>Giá Bán</th>
+                        <th>Danh Mục Sản Phẩm</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Ốc Lê Đại Lan</td>
+                        <td>5</td>
+                        <td>200.000</td>
+                        <td><span class="status-badge status-traicay">Trái cây theo mùa</span></td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fas fa-trash icon-btn icon-delete"></i>
+                                <i class="fas fa-edit icon-btn icon-edit"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Đu Đủ Ruột Đỏ Thái Lan</td>
+                        <td>9</td>
+                        <td>250.000</td>
+                        <td><span class="status-badge status-traicay">Trái cây theo mùa</span></td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fas fa-trash icon-btn icon-delete"></i>
+                                <i class="fas fa-edit icon-btn icon-edit"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Hồng Trứng Nghệ An</td>
+                        <td>8</td>
+                        <td>100.000</td>
+                        <td><span class="status-badge status-traicay">Trái cây theo mùa</span></td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fas fa-trash icon-btn icon-delete"></i>
+                                <i class="fas fa-edit icon-btn icon-edit"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Cá Trắm Đen</td>
+                        <td>10</td>
+                        <td>500.000</td>
+                        <td><span class="status-badge status-thitca">Thịt Cá Dân Dã</span></td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fas fa-trash icon-btn icon-delete"></i>
+                                <i class="fas fa-edit icon-btn icon-edit"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Chim Bồ Câu Hòa Bình</td>
+                        <td>8</td>
+                        <td>290.000</td>
+                        <td><span class="status-badge status-thitca">Thịt Cá Dân Dã</span></td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fas fa-trash icon-btn icon-delete"></i>
+                                <i class="fas fa-edit icon-btn icon-edit"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Gà Ri Mỏi</td>
+                        <td>8</td>
+                        <td>300.000</td>
+                        <td><span class="status-badge status-thitca">Thịt Cá Dân Dã</span></td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fas fa-trash icon-btn icon-delete"></i>
+                                <i class="fas fa-edit icon-btn icon-edit"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Bắp Cải Ra</td>
+                        <td>8</td>
+                        <td>200.000</td>
+                        <td><span class="status-badge status-rau">Rau An Toán</span></td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fas fa-trash icon-btn icon-delete"></i>
+                                <i class="fas fa-edit icon-btn icon-edit"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Dâu Tranh Ra</td>
+                        <td>8</td>
+                        <td>200.000</td>
+                        <td><span class="status-badge status-rau">Rau An Toán</span></td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fas fa-trash icon-btn icon-delete"></i>
+                                <i class="fas fa-edit icon-btn icon-edit"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        © 2025 Hệ Thống Quản Lý Sản Phẩm
+    </div>
+</div>
+</body>
+</html>
